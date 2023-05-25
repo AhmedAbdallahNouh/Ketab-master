@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg  ">
+  <div class="container-fluid ">
+    <img fxFlexOffset="10" fxLayoutGap="30" class="img" src="../../../assets/images/Ketab-Logo-iti.png" alt="logo">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="marg-top navbar-nav m-auto" fxLayoutGap="30">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/home" routerLinkActive="colorActive">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/new" routerLinkActive="colorActive">New </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/english" routerLinkActive="colorActive">English </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/arabic" routerLinkActive="colorActive">Arabic</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Children</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/childrenArabic" routerLinkActive="colorActive">Arabic</a></li>
+            <li><a class="dropdown-item" routerLink="/childrenEnglish" routerLinkActive="colorActive">English</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0  m-auto" fxLayoutGap="20">
+        <li class="nav-item position-relative" *ngIf="isLogged && authService.isLogExpiered()">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="colorActive">
+            <i class="fa fa-shopping-cart"></i>
+            <!-- <div class="cartCounter" >5</div> -->
+            <div class="cartCounter" >{{navBarCartLength}}</div>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!isLogged || !authService.isLogExpiered()">
+          <a class="nav-link"  routerLink="/login" routerLinkActive="colorActive">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLogged || !authService.isLogExpiered()">
+          <a class="nav-link"  routerLink="/register" routerLinkActive="colorActive">SignUp</a>
+        </li>
+        <li class="nav-item" *ngIf="isLogged && authService.isLogExpiered()">
+          <a class="nav-link"  (click)="logout()" routerLinkActive="colorActive">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

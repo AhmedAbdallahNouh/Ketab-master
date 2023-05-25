@@ -1,0 +1,13 @@
+<app-navbare *ngIf="isNotAdmin"></app-navbare>
+<!-- <div class=" marg">
+    <router-outlet (cartLengthEvent) = "sendCartLenght($event)"></router-outlet>
+</div> -->
+<router-outlet ></router-outlet>
+
+<div>
+    <h1>cart lenght:{{cartLenght}}</h1>
+</div>
+<app-footer  *ngIf="isNotAdmin"></app-footer>
+
+
+

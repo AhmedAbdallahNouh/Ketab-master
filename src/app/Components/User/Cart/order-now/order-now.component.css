@@ -1,0 +1,64 @@
+form div p{
+    font-size: small;
+}
+
+.btn-info{
+    background-color:#07BFA5;
+}
+form div p{
+    font-size: small;
+}
+
+img{
+    width: 70px;
+    height: 80px;
+}
+
+.text-title{
+    color: #002152;
+    font-size: small;
+}
+
+.btn-info{
+    background-color:#07BFA5;
+}
+.c2{
+    border: 1px solid #07BFA5;
+    /* border: 1px solid #002152; */
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px rgba(7, 191, 165, 0.3);
+    margin-top: 6% !important;
+}
+input ::placeholder{
+    font-size: 14px !important;
+}
+span {
+    font-weight: 400;
+    font-size: 15px;
+    color: #8991A4;
+    margin-right: 5px;
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    .container{
+        margin-top: 18% !important;
+    }
+}
+@media screen and (max-width: 993px) {
+    .container{
+        margin-top: 30% !important;
+    }
+    
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    .container{
+        margin-top: 18% !important;
+    }
+}
+@media screen and (max-width: 993px) {
+    .container{
+        margin-top: 30% !important;
+    }
+    
+}

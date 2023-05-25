@@ -1,0 +1,111 @@
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ADD" data-bs-whatever="@mdo">
+    <i class="fa-solid fa-plus"></i> Add New Author
+</button>
+
+<!-- Add Form -->
+<div class="modal fade" id="ADD" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Author</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="userForm">
+                    <div class="mb-3">
+                        <label for="fname" class="col-form-label">First Name</label>
+                        <input type="text" class="form-control" formControlName="firstname" id="fname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lname" class="col-form-label">Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastname" id="lname">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="col-form-label">Image</label>
+                        <input type="file" class="form-control" formControlName="image" (change)="selectImage($event)"
+                            id="image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio" class="col-form-label">Bio</label>
+                        <textarea class="form-control" formControlName="bio" id="bio"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="addAuthor()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Add Form -->
+
+<!-- Start Edit Form -->
+<div class="modal fade" id="Edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Author</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="userForm">
+                    <div class="mb-3">
+                        <label for="fname" class="col-form-label">First Name</label>
+                        <input type="text" class="form-control" formControlName="firstname" id="fname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lname" class="col-form-label">Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastname" id="lname">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="col-form-label">Image</label>
+                        <input type="file" class="form-control" (change)="selectImage($event)" id="image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio" class="col-form-label">Bio</label>
+                        <textarea class="form-control" formControlName="bio" id="bio"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="Edit()">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Edit Form -->
+
+
+<!-- Table Show Data -->
+<table class="table table-bordered">
+    <thead>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Image</th>
+        <th>Bio</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let author of authors">
+            <td>{{author.authorId}}</td>
+            <td>{{author.firstname}}</td>
+            <td>{{author.lastname}}</td>
+            <td><img src="{{author.image}}"></td>
+            <td>{{author.bio}}</td>
+            <td><i class="fa-solid fa-pen-to-square edit" data-bs-toggle="modal" data-bs-target="#Edit"
+                    data-bs-whatever="@mdo" (click)="updateAuthor(author)"></i></td>
+            <td><i class=" fa-sharp fa-solid fa-trash delete" (click)="deleteAuthor(author.authorId)"></i></td>
+        </tr>
+
+    </tbody>
+</table>

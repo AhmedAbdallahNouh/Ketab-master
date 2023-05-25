@@ -1,0 +1,22 @@
+.sidebar {
+    background-color: #002152;
+    height: 100%;
+}
+
+.logo {
+    width: 150px;
+    padding: 20px 0;
+}
+
+ul li a {
+    color: white;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.activelink {
+    background-color: rgb(255, 255, 255);
+    color: #002152 !important;
+    padding: 10px 20px !important;
+    transition: 0.3s;
+}

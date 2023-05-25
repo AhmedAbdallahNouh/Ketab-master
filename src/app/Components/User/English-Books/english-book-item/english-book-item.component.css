@@ -1,0 +1,113 @@
+
+
+.book-holder{
+    box-shadow: 0px 4px 30px rgba(27, 25, 86, 0.1);
+    border-radius: 16px;
+    height: 450px;
+    transition: all 1s ease-in-out;
+    position: relative;
+}
+.book-holder:hover img{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.book-holder>span{
+    width: 30px;
+    height: 19px;
+    font-size: 12px;
+    border-radius: 4px;
+    padding-left: 3px;
+    background-color:#FF6264;
+    color: white;
+    position: absolute;
+    top: 9px;
+    margin-left: 8px;
+}
+/* Content block */
+.book-img{
+    padding-top: 20px;
+    width: 150px;
+    border-radius: 3px;
+    margin: auto;
+}
+/* Book img */
+img{
+    width: 100%;
+    height: 300px;
+    border-radius: 3px;
+    margin: auto;
+    margin-bottom: 13px;
+    display: block;
+}
+.book-price span {
+    font-weight: 400;
+    font-size: 15px;
+    color: #8991A4;
+    margin-right: 5px;
+}
+/* Book desc */
+.auther-name,
+.book-title{
+    text-align: center;
+    color: #01221D;
+}
+.book-title{
+    font-weight: 400;
+    font-size: 18px;
+}
+.auther-name{
+    font-weight: 400;
+    font-size: 14px;
+}
+.book-price{
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    color: #01040D;
+}
+/* Add to cart btn */
+.add-btn-container{
+    position: absolute;
+    bottom: -21px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
+.add-btn{
+    border:none;
+    background-color: transparent;
+    outline: none;
+}
+.add-btn:hover .fa-circle-plus {
+    color: #002152;
+}
+.fa-circle-plus{
+    font-size: 3em;
+    color:#07BFA5;
+    box-shadow: 0px 8px 20px rgba(7, 191, 165, 0.3);
+    border-radius: 42px;
+}
+
+@media screen and (max-width: 767px) {
+    .book-holder{
+        width: 420px !important;
+        margin: auto;
+    }
+    h2{
+        font-size: 30px;
+    }
+}
+@media (max-width: 1199px) and (min-width: 992px)  {
+    .book-title{
+        font-size: 14px;
+    }
+    .book-desc{
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width: 465px) {
+    .book-holder {
+        width: 260px !important;
+    }
+}

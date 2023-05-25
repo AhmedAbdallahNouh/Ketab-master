@@ -1,0 +1,58 @@
+.marg{
+    margin-top: 15%;
+}
+img{
+    width: 100px;
+    height: 120px;
+}
+.book-price span {
+    font-weight: 400;
+    font-size: 15px;
+    color: #8991A4;
+    margin-right: 5px;
+}
+.amount{
+    display: flex;
+    justify-content: center;
+    /* width: 40px; */
+}
+.amount div{
+    
+    text-align: center;
+    width: 30px;
+    padding: 0px !important;
+    height: 27px;
+}
+.itemHolder{
+    align-items: center !important;
+}
+.fa-solid{
+    font-size: x-large;
+    cursor: pointer;
+    color: #002152;
+}
+.fa-trash-can:hover{
+    color: darkred !important;
+}
+p{
+    color: #002152;
+}
+.btn-dark{
+    /* width:25%; */
+    background-color: #07BFA5;
+    border-color: #07BFA5;
+    box-shadow: 0px 8px 20px rgba(7, 191, 165, 0.3);
+}
+
+@media screen and (max-width: 990px) {
+    .container{
+        margin-top: 20%;
+    }
+    p{
+        font-size: 14px;
+        margin-left: 15px;
+    }
+    .fa-solid{
+        font-size: medium;
+    }
+}

@@ -1,0 +1,235 @@
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ADD" data-bs-whatever="@mdo">
+    <i class="fa-solid fa-plus"></i> Add New Book
+</button>
+
+<!-- Add Form -->
+<div class="modal fade" id="ADD" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="userForm">
+
+                    <div class="mb-3">
+                        <label for="desc" class="col-form-label">Describtion</label>
+                        <textarea class="form-control" formControlName="describtion" id="desc"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="title" class="col-form-label">Title</label>
+                        <input type="text" class="form-control" formControlName="title" id="title">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price</label>
+                        <input type="number" class="form-control" formControlName="price" id="price">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="page" class="col-form-label">Page</label>
+                        <input type="number" class="form-control" formControlName="page" id="page">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="publisherDate" class="col-form-label">Publisher Date</label>
+                        <input type="text" class="form-control" formControlName="publisherDate" id="publisherDate">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Author Name</label>
+                        <select (change)="changeAuthor($event)" class="form-select" formControlName="authorFirstname">
+                            <option [value]="author.authorId" *ngFor="let author of authors">
+                                {{author.firstname}} {{author.lastname}}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Sub Category</label>
+                        <select (change)="changeCategory($event)" class="form-select" formControlName="categoryName">
+                            <option [value]="category.categoryId" *ngFor="let category of categories">{{category.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Publisher Name</label>
+                        <select (change)="changePublisher($event)" class="form-select" formControlName="publisherName">
+                            <option [value]="publisher.publisherId" *ngFor="let publisher of publishers">
+                                {{publisher.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="arrivalDate" class="col-form-label">Arrival Date</label>
+                        <input type="text" class="form-control" formControlName="arrivalDate" id="arrivalDate">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="poster" class="col-form-label">Poster</label>
+                        <input type="file" class="form-control" formControlName="poster" id="poster"
+                            (change)="selectImage($event)">
+                    </div>
+
+                    <div class=" mb-3">
+                        <label for="mainCategory" class="col-form-label">Main Category</label>
+                        <select class="form-select" formControlName="mainCategory">
+                            <option>Arabic</option>
+                            <option>English</option>
+                            <option>ChildrenA</option>
+                            <option>ChildrenE</option>
+                        </select>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="addNewBook()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Add Form -->
+
+<!-- Edit Form -->
+<div class="modal fade" id="Edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="userForm">
+
+                    <div class="mb-3">
+                        <label for="desc" class="col-form-label">Description</label>
+                        <textarea class="form-control" formControlName="describtion" id="desc"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="title" class="col-form-label">Title</label>
+                        <input type="text" class="form-control" formControlName="title" id="title">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price</label>
+                        <input type="number" class="form-control" formControlName="price" id="price">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="page" class="col-form-label">Page</label>
+                        <input type="number" class="form-control" formControlName="page" id="page">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="publisherDate" class="col-form-label">Publisher Date</label>
+                        <input type="text" class="form-control" formControlName="publisherDate" id="publisherDate">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Author Name</label>
+                        <select (change)="changeAuthor($event)" class="form-select" formControlName="authorID">
+                            <option [value]="author.authorId" *ngFor="let author of authors">
+                                {{author.firstname}} {{author.lastname}}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Sub Category</label>
+                        <select (change)="changeCategory($event)" class="form-select" formControlName="categoryID">
+                            <option [value]="category.categoryId" *ngFor="let category of categories">{{category.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Publisher Name</label>
+                        <select (change)="changePublisher($event)" class="form-select" formControlName="publisherID">
+                            <option [value]="publisher.publisherId" *ngFor="let publisher of publishers">
+                                {{publisher.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="arrivalDate" class="col-form-label">Arrival Date</label>
+                        <input type="text" class="form-control" formControlName="arrivalDate" id="arrivalDate">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="poster" class="col-form-label">Poster</label>
+                        <input type="file" class="form-control" formControlName="poster" id="poster"
+                            (change)="selectImage($event)">
+                    </div>
+
+                    <div class=" mb-3">
+                        <label for="mainCategory" class="col-form-label">Main Category</label>
+                        <select class="form-select" formControlName="mainCategory">
+                            <option selected>Select Category</option>
+                            <option>Arabic</option>
+                            <option>English</option>
+                            <option>ChildrenA</option>
+                            <option>ChildrenE</option>
+                        </select>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)=" Update()">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Edit Form -->
+
+<!-- Table Show Data -->
+<div class="responsive-table">
+    <table class="table table-bordered">
+        <thead>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Desc</th>
+            <th>Price</th>
+            <th>Page</th>
+            <th>Poster</th>
+            <th>Main Category</th>
+            <th>Sub Category</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Publisher Date</th>
+            <th>Arrival Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books">
+                <td>{{book.id}}</td>
+                <td>{{book.title}}</td>
+                <td>{{book.describtion}}</td>
+                <td>EGP {{book.price}}</td>
+                <td>{{book.page}}</td>
+                <td><img src="{{book.poster}}"></td>
+                <td>{{book.mainCategory}}</td>
+                <td>{{book.categoryName}}</td>
+                <td>{{book.authorFirstname}} {{book.authorLastname}}</td>
+                <td>{{book.publisherName}}</td>
+                <td>{{book.publisherDate |date}}</td>
+                <td>{{book.arrivalDate |date }}</td>
+                <td><i class="fa-solid fa-pen-to-square edit" data-bs-toggle="modal" data-bs-target="#Edit"
+                        data-bs-whatever="@mdo" (click)="updateBook(book)"></i></td>
+                <td><i class=" fa-sharp fa-solid fa-trash delete" (click)="deleteBook(book.id)"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,29 @@
+<div class="container " style="margin-top: 15%;">
+    <h1>New Arrivals</h1>
+    <div class="row">
+        <div class=" col-lg-3 col-md-6 col-sm-12 mb-5" *ngFor="let newBook of  newArrivals">
+            <div class="book-holder"[routerLink]="['/book',newBook.id]">
+                <span>New</span>
+                <div  class="book-img">
+                    <img [src]="newBook.poster" alt="img">
+                    <br>
+                    <div class="book-desc">
+                        <p class="book-title">{{newBook.title}}</p>
+                        <p class="book-title">{{newBook.authorFirstname}}</p>
+                        <p class="book-price">{{newBook.price}} </p>
+                    </div>
+                </div>
+                <div class="add-btn-container">
+                    <button class="add-btn" (click)=" addToCart(newBook.id, newBook)">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+
+
+
+
+    

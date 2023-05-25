@@ -1,0 +1,9 @@
+<div class="container mt-5">
+    <h2>Top Authors</h2>
+    <div class="topAuthors">
+        <div class="author" *ngFor="let author of topAuthors" [routerLink]="['/author',author.firstname]">
+            <a ><img [src]="author.image"></a>
+            <p>{{author.firstname}} {{author.lastname}}</p>
+        </div>
+    </div>
+</div>

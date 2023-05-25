@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-12">
+            <img src="{{authorDetails.image}}" alt="book">
+        </div>
+        <div class="col-md-1 col-sm-12"></div>
+        <div class="col-md-8 col-sm-12">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{authorDetails.firstname}} {{authorDetails.lastname}}</td>
+                    </tr>
+                    <tr>
+                        <td>Bio</td>
+                        <td>{{authorDetails.bio}}</td>
+                    </tr>
+                    <tr>
+                        <td>Books</td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let book of authorDetails.bookName">{{book}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+    
+</div>
+
+
+

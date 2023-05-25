@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class=" col-lg-3 col-md-6 col-sm-12 mb-5"
+        *ngFor="let book of englishBooks|search:term">
+            <div class="book-holder">
+                <div [routerLink]="['/book',book.id]" class="book-img">
+                    <img class="mb-2" src="{{book.poster}}" alt="book">
+                    <div class="book-desc">
+                        <p class="book-title">{{book.title}}</p>
+                        <p class="auther-name">{{book.authorFirstname}} {{book.authorLastname}}</p>
+                        <p class="book-price"><span>EGP</span> {{book.price}}</p>
+                    </div>
+                </div>
+                <div class="add-btn-container">
+                    <button class="add-btn" (click)="item.emit(book)">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,78 @@
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ADD" data-bs-whatever="@mdo">
+    <i class="fa-solid fa-plus"></i> Add New Category
+</button>
+
+
+<!-- Add Form -->
+<div class="modal fade" id="ADD" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="userForm">
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name</label>
+                        <input type="text" class="form-control" formControlName="name" id="name">
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="addCategory()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Add Form -->
+
+<!-- Edit Form -->
+<div class="modal fade" id="Edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="userForm">
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name</label>
+                        <input type="text" class="form-control" formControlName="name" id="name">
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)=" Edit()">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Edit Form -->
+
+<!-- Table Show Data -->
+<table class="table table-bordered">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories">
+            <td>{{category.categoryId}}</td>
+            <td>{{category.name}}</td>
+            <td><i class="fa-solid fa-pen-to-square edit" data-bs-toggle="modal" data-bs-target="#Edit"
+                    data-bs-whatever="@mdo" (click)="updateCategory(category)"></i></td>
+            <td><i class=" fa-sharp fa-solid fa-trash delete" (click)="deleteCategory(category.categoryId)"></i></td>
+        </tr>
+
+    </tbody>
+</table>

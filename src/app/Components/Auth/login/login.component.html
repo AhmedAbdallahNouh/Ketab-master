@@ -1,0 +1,64 @@
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="logSubmit(loginForm)" class="p-5" >
+
+        <label for="mail">Email</label>
+        <input formControlName="Email"  type="email" name="" id="mail" class=" form-control mb-2">
+        <div *ngIf="loginForm.get('Email')?.errors && loginForm.get('Email')?.touched ">
+            <p class=" text-danger ms-4" *ngIf="loginForm.get('Email')?.errors?.['required']">This field is required</p>
+            <p class=" text-danger ms-4" *ngIf="loginForm.get('Email')?.errors?.['email']">This email is Invalid</p>
+        </div>
+    
+        <label for="pass">Password</label>
+        <input formControlName="password"  type="password" name="" id="pass" class=" form-control mb-2">
+        <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched ">
+            <p class=" text-danger ms-4" *ngIf="loginForm.get('password')?.errors?.['required']">This field is required</p>
+        </div>
+
+        <p class="small">don't have an account? <u><a routerLink="/register">Sign Up now. </a></u></p>
+        <div class="form-inline fr mt-3">
+            <u><a id="forgot" data-bs-toggle="modal" data-bs-target="#exampleModal" class="font-weight-bold">Forgot Password.</a></u>
+        </div>
+    
+        <div *ngIf="sniper == 'disable' " class="d-flex justify-content-center">
+            <div class="spinner-border text-success"  role="status">
+              <span  class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        <div class="text-center">
+            <button [disabled]="loginForm.invalid" type="submit" (click)="sniperDisable()" class="btn btn-info text-white w-25  mt-3">Login</button>
+        </div>
+        <div class="text-center">
+            <a></a>
+        </div>
+    </form>
+</div>
+
+
+<!-- modal -->
+<!-- Vertically centered modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Enter your Email To Reset Password</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="forgotPassword" >
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Email:</label>
+              <input formControlName="Email" type="email" class="form-control" id="recipient-name" [(ngModel)]="EmailValue">
+            </div>
+            <div *ngIf="forgotPassword.get('Email')?.errors && loginForm.get('Email')?.touched ">
+                <p class=" text-danger ms-4" *ngIf="forgotPassword.get('Email')?.errors?.['required']">This field is required</p>
+                <p class=" text-danger ms-4" *ngIf="forgotPassword.get('Email')?.errors?.['email']">This email is Invalid</p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="closeBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button  type="button"  class="btn btn-primary" (click)="confirmToSend()">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>

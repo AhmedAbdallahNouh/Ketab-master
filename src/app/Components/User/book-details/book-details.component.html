@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-12">
+            <img src="{{bookDetails.poster}}" alt="book">
+            <div class="mt-3">
+                    <!-- <div class="col-md-4 col-sm-12 mb-2">
+                        <form>
+                            <input #element type="number" name="quantity" [(ngModel)]="element.value" (ngModelChange)="getQuantityValue($event)" value="1" min="1" >
+                        </form>
+                    </div> -->
+            <div class="text-center  mb-2">
+                <button class="btn btn-dark" (click)=" addToCart(bookDetails.id, bookDetails)">Add To Cart</button>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-1 col-sm-12"></div>
+        <div class="col-md-8 col-sm-12">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>Price</td>
+                        <td><span class="cuurency">EGP</span>{{bookDetails.price}}</td>
+                    </tr>
+                    <tr>
+                        <td>Title</td>
+                        <td>{{bookDetails.title}}</td>
+                    </tr>
+                    <tr>
+                        <td>Author</td>
+                        <td class="authorPage" [routerLink]="['/author',bookDetails.authorFirstname]">
+                            {{bookDetails.authorFirstname}} {{bookDetails.authorLastname}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td>{{bookDetails.categoryName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Publisher</td>
+                        <td>{{bookDetails.publisherName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Pages</td>
+                        <td>{{bookDetails.page}}</td>
+                    </tr>
+                    <tr>
+                        <td>Publishe Date</td>
+                        <td>{{bookDetails.publisherDate | date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Describtion</td>
+                        <td>{{bookDetails.describtion}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br> 
+<br>
+
+
+<app-reviews></app-reviews>
+
+

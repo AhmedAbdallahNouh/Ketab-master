@@ -1,0 +1,107 @@
+<div class="container">
+    <form [formGroup]="registerForm"  (ngSubmit)="submitForm(registerForm)" class=" row p-5">
+
+        <div class="col-md-6 col-sm-11">
+            <label  for="firstName">First Name</label>
+            <input class="first-name" formControlName="firstName" class=" form-control mb-2" type="text"  id="firstName" [ngClass]=" {'first-name': registerForm.get('firstName')?.errors} ">
+            
+            <!-- <input formControlName="firstName" class=" form-control mb-2" type="text"  id="firstName"> -->
+
+
+            <div *ngIf=" registerForm.get('firstName')?.touched && registerForm.get('firstName')?.errors" class="">
+            
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('firstName')?.errors?.['required']">
+                    This field is required</p>
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('firstName')?.errors?.['pattern']">
+                    First character must be upperCase</p>
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('firstName')?.errors?.['minlength']">
+                    At least 3 characteres</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-11">
+            <label  for="lastName">Last Name</label>
+            <input class="last-name" formControlName="lastName" class=" form-control mb-2" type="text"  id="lastName" [ngClass]=" {'last-name': registerForm.get('lastName')?.errors} ">
+            <div *ngIf="registerForm.get('lastName')?.errors && registerForm.get('lastName')?.touched " >
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('lastName')?.errors?.['required']">
+                    This field is required</p>
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('lastName')?.errors?.['pattern']">
+                    First character must be upperCase</p>
+                <p  class=" text-danger ms-4" *ngIf="registerForm.get('lastName')?.errors?.['minlength']"> 
+                    At least 3 characteres</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-11">
+            <label  for="userName">Username</label>
+            <input class="user-name" formControlName="userName" class=" form-control mb-2" type="text"  id="userName">
+            <div *ngIf="registerForm.get('userName')?.errors && registerForm.get('userName')?.touched " >
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('userName')?.errors?.['required']">
+                    This field is required</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-11">
+            <label  for="phone">Phone</label>
+            <input class="phone" formControlName="phoneNumber" class=" form-control mb-2" type="tel" name="mail" id="phone">
+            <div *ngIf="registerForm.get('phoneNumber')?.errors && registerForm.get('phoneNumber')?.touched ">
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">This field is required</p>
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">This phone number is Invalid</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-11">
+            <label  for="Address">Address</label>
+            <input class="address" formControlName="address" class=" form-control mb-2" type="text"  id="Address">
+            <div *ngIf="registerForm.get('address')?.errors && registerForm.get('address')?.touched">
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('address')?.errors?.['required']">This field is required</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-11">
+            <label for="email">Email</label>
+            <input class="email" formControlName="email" class=" form-control mb-2" type="email" name="mail" id="email">
+            <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched ">
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('email')?.errors?.['required']">This field is required</p>
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('email')?.errors?.['email']">This email is Invalid</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-11">
+            <label  for="password">Password</label>
+            <input class="password" #passValue formControlName="password" class=" form-control mb-2" type="password"  id="password">
+            <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('password')?.errors?.['required']">This field is required</p>
+                <ul *ngIf="registerForm.get('password')?.errors?.['pattern']" class=" text-danger ms-4">
+                    <li> At least one upper case English letter</li>
+                    <li>At least one lower case English letter</li>
+                    <li> At least one special character or space</li>
+                    <li> At least 8 digits</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-11">
+            <label  for="confirmPassword">Confirm Password</label>
+            <input class="confirm-password" #passConfirmValue formControlName="confirmPassword" class=" form-control mb-2" type="password"  id="confirmPassword">
+            <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched ">
+                <p class=" text-danger ms-4" *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">This field is required</p>
+            </div>
+            <div *ngIf="registerForm.get('confirmPassword')?.touched ">
+                <p class=" text-danger ms-4" *ngIf="passValue.value != passConfirmValue.value">Passwords do NOT match</p>
+            </div>
+        </div>
+
+        <div *ngIf="sniper == 'disable' " class="d-flex justify-content-center">
+            <div class="spinner-border text-success"  role="status">
+              <span  class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <div class=" text-center">
+            <button type="submit" [disabled]="registerForm.invalid || (passValue.value != passConfirmValue.value)" (click)="sniperDisable()" class=" w-50 btn btn-info text-white  mt-4">
+                Sign Up
+            </button>    
+        </div>
+    </form>
+</div>

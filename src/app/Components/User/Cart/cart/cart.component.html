@@ -1,0 +1,54 @@
+<p *ngIf="!cartItems.length" class="alert-primary alert text-center h4">Cart is empty</p>
+<div class="container">
+    <div class="row m-auto">
+        <div  class="col-md-10 m-auto">
+            <div class="itemHolder text-center py-3 mb-5 m-auto row shadow border-opacity-50" 
+                *ngFor="let item of  cartItems; let index = index">
+
+                <div class="col-md-2">
+                    <img src="{{item.poster}}"  width="100px">
+                </div>
+
+                <div class="col-md-2 mt-2">
+                    <div class="row">
+                        <p class="h6 col-md-12 text-muted">Book Title</p>
+                        <p class="h5 col-md-12">{{item.title}}</p>
+                    </div>
+                </div> 
+
+                <div class="col-md-2 mt-2 book-price">
+                    <div class="row">
+                        <p class="h6 col-md-12 text-muted">Book Price</p>
+                        <p class="h5 col-md-12"><span>EGP</span>{{item.price}}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-2 mt-3 amount text-center">
+                    <input class=" form-control w-100" #element type="number" name="quantity" [(ngModel)]="element.value" (ngModelChange)="getQuantityValue(item.id,$event)" value="{{item.amount}}" min="1">
+                </div>
+
+                <div class="col-md-2 mt-2 book-price">
+                    <div class="row">
+                        <p class="h6 col-md-12 text-muted">Subtotal</p>
+                        <p class="h5 col-md-12"><span>EGP</span>{{+(element.value) * item.price}}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-2 mt-2" >
+                    <i class="fa-solid fa-trash-can" (click)="deletItem(index, item.id)"></i>
+                </div> 
+            </div>
+            <div class="book-price" >
+                <p class="h5">Total= <span>EGP</span>{{Total}}</p>
+            </div>
+            <button *ngIf="cartItems.length" class="btn btn-danger mt-5 m-auto" (click)="clearCart()" >
+                Clear Cart</button>
+            <button *ngIf="cartItems.length" routerLink="/order" class="btn btn-dark text-white mt-5 m-auto float-end" >
+                Proceed to checkout </button>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
